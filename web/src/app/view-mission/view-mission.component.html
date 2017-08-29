@@ -1,0 +1,30 @@
+<div class="container">
+  <button type="button" class="btn btn-primary" routerLink="/missions/create">Create Mission</button>
+  <ul>
+    <li class="text" *ngFor="let mission of missions | async">
+       - derp
+    </li>
+  </ul>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let mission of missions | async">
+      <th scope="row">{{mission.id }}</th>
+      <td>{{mission.title }}</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+  </tbody>
+</table>
+
+{{missions | async | json}}

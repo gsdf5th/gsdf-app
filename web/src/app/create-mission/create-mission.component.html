@@ -1,0 +1,52 @@
+<form id="newMissionForm" name="newMissionForm" class="ng-pristine ng-invalid ng-invalid-required ng-valid-date ng-valid-min ng-valid-max ng-valid-step">
+  <div class="input-group">
+      <span class="input-group-addon">id</span>
+      <input class="form-control ng-pristine ng-untouched ng-valid ng-empty" type="text" ng-model="$ctrl.newMission.id" placeholder="SAD...">
+  </div>
+  <div class="input-group">
+      <span class="input-group-addon">Title</span>
+      <input class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" type="text" ng-model="$ctrl.newMission.title" ng-required="true" required="required">
+  </div>
+  <div class="input-group">
+      <span class="input-group-addon">Location</span>
+      <input class="form-control ng-pristine ng-untouched ng-valid ng-empty" type="text" ng-model="$ctrl.newMission.location">
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">Start Date</span>
+    <input class="form-control" placeholder="yyyy-mm-dd" name="startDate" [(ngModel)]="modelStartDate" ngbDatepicker #d1="ngbDatepicker">
+    <button class="input-group-addon" (click)="d1.toggle()" type="button">
+      <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+    </button>
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">End Date</span>
+    <input class="form-control" placeholder="yyyy-mm-dd" name="endDate" [(ngModel)]="modelEndDate" ngbDatepicker #d2="ngbDatepicker">
+    <button class="input-group-addon" (click)="d2.toggle()" type="button">
+      <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+    </button>
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">Duty Level</span>
+    <input type="number" class="form-control ng-pristine ng-untouched ng-empty ng-valid-min ng-valid-max ng-valid-step ng-invalid ng-invalid-required" min="1" max="4" step="1" ng-model="$ctrl.newMission.dutyLevel" ng-required="true" required="required">
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">Staff Needed</span>
+      <input type="number" class="form-control ng-pristine ng-untouched ng-empty ng-valid-min ng-valid-step ng-invalid ng-invalid-required" min="1" step="1" ng-model="$ctrl.newMission.staffNeeded" ng-required="true" required="required">
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">Staff Max</span>
+      <input type="number" class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-min ng-valid-step" min="1" step="1" ng-model="$ctrl.newMission.staffMax">
+  </div>
+  <div class="form-group">
+      <label>Description: </label>
+      <textarea class="form-control ng-pristine ng-untouched ng-valid ng-empty" ng-model="$ctrl.newMission.description" placeholder="Special equipment, needs, notes, etc."></textarea>
+  </div>
+  <div class="form-group">
+      <label for="message">Attachments: </label>
+      <!-- ngRepeat: (index, item) in $ctrl.newMission.attachments -->
+      <input type="file" id="newAttachment" custom-on-change="attachmentAdded">
+      <input type="button" ng-show="$ctrl.newPin.hasAttachments()" value="Clear Attachments" ng-click="$ctrl.clearAttachments()" class="ng-hide">
+  </div>
+  <p></p>
+  <button ng-click="$ctrl.createMission()" type="submit" class="btn btn-danger" data-dismiss="modal" ng-disabled="newMissionForm.$invalid" disabled="disabled">Create</button>
+</form>
