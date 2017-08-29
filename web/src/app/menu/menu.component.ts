@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-menu',
@@ -15,16 +16,18 @@ export class MenuComponent implements OnInit {
   userdata: firebase.User;
   userID: string;
 
-  constructor(public afAuth: AngularFireAuth) {
+  constructor(public afAuth: AngularFireAuth,
+              private location: Location) {
     this.user = afAuth.authState;
   }
 
-    login() {
+  login() {
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
   logout() {
     this.afAuth.auth.signOut();
+    
   }
 
   updateProfileLink(user: firebase.User){
@@ -33,7 +36,15 @@ export class MenuComponent implements OnInit {
     }    
   }
 
+  redirectOnAnon(){
+    if(!this.afAuth.auth.currentUser){
+      this.location.go("/");
+      
+    }
+  }
+
   ngOnInit() {
+    this.redirectOnAnon();
     this.user.subscribe(
           user => this.updateProfileLink(user)
       );
