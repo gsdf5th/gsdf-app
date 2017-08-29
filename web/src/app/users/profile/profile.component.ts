@@ -34,7 +34,6 @@ export class ProfileComponent implements OnInit {
 
        // In a real app: dispatch action to load the details here.
     });
-    console.log(this.user)
    this.userdetail = this.userSvc.getUser(this.id);
   }
 

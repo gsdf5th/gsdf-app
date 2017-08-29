@@ -40,9 +40,8 @@
                 </tr>
             </tbody>
             </table>
-          <p>
+            <h4 class="card-title">Extra Details </h4>
             {{ (missionDetails | async)?.extraDetails }}
-          </p>
       </div>
     </div>
   </div>
@@ -55,6 +54,9 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">Mission Roster</h4>
+        <button *ngIf="!rosterStatus" (click)='addSignupStatus()' class="btn btn-success my-2 my-sm-0">Sign yourself up for the mission</button>
+
+        <button *ngIf="rosterStatus" (click)='removeSignupStatus()' class="btn btn-danger my-2 my-sm-0">Remove yourself from the mission</button>
 <table class="table">
   <thead>
     <tr>
@@ -71,16 +73,10 @@
     </tr>
   </tbody>
 </table>
-<button (click)='addSignupStatus()' class="btn btn-outline-success my-2 my-sm-0">Signup for mission</button>
 
-<button (click)='removeSignupStatus()' class="btn btn-outline-success my-2 my-sm-0">Remove from mission</button>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container">
 
-
-
-</div>

@@ -9,7 +9,7 @@ import * as firebase from 'firebase/app';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-
+  navbarCollapsed = true;
   user: Observable<firebase.User>;
   title = 'NetEOC';
   userdata: firebase.User;

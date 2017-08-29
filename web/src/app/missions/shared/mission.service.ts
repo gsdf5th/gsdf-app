@@ -61,6 +61,16 @@ export class MissionService {
       .catch(error => this.handleError(error))
 
   }
+  // find out if a user is already signed up for a mission
+  getMissionSignupStatus(missionID: string, userID: string): boolean {
+    const missionPath =  `${this.basePath}/${missionID}/roster/${userID}`
+    if(this.db.object(missionPath)){
+      return true
+    } else {
+      return false
+    }
+
+  }
   // Deletes a single item
   deleteMission(key: string): void {
       this.missions.remove(key)

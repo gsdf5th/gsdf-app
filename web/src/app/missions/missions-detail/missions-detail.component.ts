@@ -20,9 +20,11 @@ import { Roster } from '../shared/roster';
 export class MissionsDetailComponent implements OnInit {
   missionDetails: FirebaseObjectObservable<Mission>;
   roster: FirebaseListObservable<Roster[]>
+  rosterStatus: boolean;
   user: Observable<firebase.User>;
   private sub: any;
   id: string;
+  show: boolean = true;
 
   constructor(private missionSvc: MissionService,
               private route: ActivatedRoute,
@@ -45,6 +47,28 @@ export class MissionsDetailComponent implements OnInit {
     this.missionSvc.removeMissionSignup(this.id, this.afAuth.auth.currentUser.uid)
   }
 
+  checkSignupStatus1(missionDetails){
+      this.user.subscribe(
+          user => this.checkSignupStatus2(user, missionDetails)
+      );
+  }
+
+  checkSignupStatus2(user, missionDetails){
+    try
+    {
+    if(missionDetails.roster[user.uid]){
+      this.rosterStatus = true
+    }
+    }
+    catch (TypeError)
+    {
+     this.rosterStatus = false;
+    }
+    
+
+  }
+
+
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -54,6 +78,10 @@ export class MissionsDetailComponent implements OnInit {
     });
     this.missionDetails = this.missionSvc.getMission(this.id);
     this.roster = this.missionSvc.getRosterList(this.id)
+    //this.rosterStatus = this.roster[this.afAuth.auth.currentUser.uid]
+    this.missionDetails.subscribe(
+          missionDetails => this.checkSignupStatus1(missionDetails)
+      );
 
   }
 

@@ -10,7 +10,7 @@ export const environment = {
     authDomain: 'gsdf-8dc44.firebaseapp.com',
     databaseURL: 'https://gsdf-8dc44.firebaseio.com',
     projectId: 'gsdf-8dc44',
-    storageBucket: '',
+    storageBucket: 'gs://gsdf-8dc44.appspot.com/',
     messagingSenderId: '909502452748'
   }
 };

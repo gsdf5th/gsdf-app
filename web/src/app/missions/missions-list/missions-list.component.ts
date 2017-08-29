@@ -4,11 +4,13 @@ import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable }
 import { Mission } from '../shared/mission';
 import { MissionService } from '../shared/mission.service'
 
+import { UploadService } from '../shared/upload.service';
+
 @Component({
   selector: 'missions-list',
   templateUrl: './missions-list.component.html',
   styleUrls: ['./missions-list.component.css'],
-  providers: [MissionService]
+  providers: [MissionService, UploadService]
 })
 export class MissionsListComponent implements OnInit {
 

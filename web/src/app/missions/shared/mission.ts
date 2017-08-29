@@ -8,6 +8,7 @@ export class Mission {
   dutyLevel: string;
   staffNeeded: number;
   staffMax: number;
-  details: string;
+  staffMin: number;
+  extraDetails: string;
   attachments: string;
 }
