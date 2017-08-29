@@ -1,4 +1,9 @@
 
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+  <li class="breadcrumb-item"><a routerLink="/missions">Missions</a></li>
+  <li class="breadcrumb-item active">{{ (missionDetails | async)?.title  }}</li>
+</ol>
 
 <h1>{{ (missionDetails | async)?.title  }}</h1>
 
@@ -26,11 +31,18 @@
                     <td>{{ (missionDetails | async)?.location }} </td>
                 </tr>
                 <tr>
-                    <th scope="row">location</th>
-                    <td>{{ (missionDetails | async)?.location }} </td>
+                    <th scope="row">Staff Min</th>
+                    <td>{{ (missionDetails | async)?.staffMin }} </td>
+                </tr>
+                <tr>
+                    <th scope="row">Staff Max</th>
+                    <td>{{ (missionDetails | async)?.staffMax }} </td>
                 </tr>
             </tbody>
             </table>
+          <p>
+            {{ (missionDetails | async)?.extraDetails }}
+          </p>
       </div>
     </div>
   </div>

@@ -14,10 +14,8 @@ import { routes } from './app.routes';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { environment } from '../environments/environment';
-import { CreateMissionComponent } from './create-mission/create-mission.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './users/profile/profile.component';
-import { ViewMissionComponent } from './view-mission/view-mission.component';
 import { MissionsListComponent } from './missions/missions-list/missions-list.component';
 import { MissionsDetailComponent } from './missions/missions-detail/missions-detail.component';
 import { MissionsFormComponent } from './missions/missions-form/missions-form.component';
@@ -33,10 +31,8 @@ RouterModule.forRoot([
   declarations: [
     AppComponent,
     MenuComponent,
-    CreateMissionComponent,
     HomeComponent,
     ProfileComponent,
-    ViewMissionComponent,
     MissionsListComponent,
     MissionsDetailComponent,
     MissionsFormComponent

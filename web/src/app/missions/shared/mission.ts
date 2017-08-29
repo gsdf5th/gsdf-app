@@ -1,5 +1,6 @@
 export class Mission {
   $key: string;
+  incidentID: string;
   title: string;
   location: string;
   startDate: string;

@@ -10,6 +10,8 @@ import { MissionService } from '../shared/mission.service';
 })
 export class MissionsFormComponent implements OnInit {
 
+  public isCollapsed = true;
+
   mission: Mission = new Mission();
 
   constructor(private missionSvc: MissionService) { }

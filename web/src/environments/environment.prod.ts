@@ -1,11 +1,11 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: 'AIzaSyCenIxwTSAkUZaPlTsDKYpMN-uBjsxiFvY',
-    authDomain: 'gsdf-8dc44.firebaseapp.com',
-    databaseURL: 'https://gsdf-8dc44.firebaseio.com',
-    projectId: 'gsdf-8dc44',
+    apiKey: 'AIzaSyBJDqrlCO8HWNWsMXgHw8gVahwMpUyhmO8',
+    authDomain: 'neteoc-prod.firebaseapp.com',
+    databaseURL: 'https://neteoc-prod.firebaseio.com',
+    projectId: 'neteoc-prod',
     storageBucket: '',
-    messagingSenderId: '909502452748'
+    messagingSenderId: '957888769819'
   }
 };
