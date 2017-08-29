@@ -1,7 +1,40 @@
-<div class="card" style="width: 20rem;">
-  <img class="card-img-top" src="{{ (user | async)?.photoURL }}" alt="Card image cap">
+<div class="card">
+  <h4 class="card-header">{{ (userdetail | async)?.displayName }}</h4>
   <div class="card-body">
-    <h4 class="card-title">{{ (user | async)?.displayName }}</h4>
-    <p class="card-text"></p>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <img src="{{ (userdetail | async)?.photoURL }}" alt="Card image cap">
+        </div>
+        <div class="col">
+          <table class="table">
+            <thead>
+              <h4>Profile Data</h4>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Display Name</th>
+                <td>{{ (userdetail | async)?.displayName }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Email</th>
+                <td>{{ (userdetail | async)?.email }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Cell Phone</th>
+                <td><a href="tel:{{ (userdetail | async)?.cellPhone }}">{{ (userdetail | async)?.cellPhone }}</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!--<h4 class="card-title">Special title treatment</h4>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>-->
   </div>
 </div>
+
+
+{{ (userdetail | async | json) }}

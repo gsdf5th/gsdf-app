@@ -22,7 +22,7 @@
     <tr *ngFor="let mission of missions | async">
       
       <th scope="row"><a [routerLink]="['/missions', mission.$key  ]">{{  mission.incidentID }}</a></th>
-      <td>{{ mission.title || 'missing title' }}</td>
+      <td>{{ mission.title | slice:0:28 || 'missing title' }}</td>
       <td class="d-none d-md-table-cell">{{ mission.dutyLevel || 'missing locaton' }}</td>
       <td class="d-none d-sm-table-cell">{{ mission.location || 'missing Duty Level' }}</td>
       <td class="d-none d-md-table-cell">{{(mission.startDate)?.year}} {{(mission.startDate)?.month}} {{(mission.startDate)?.day}}</td>

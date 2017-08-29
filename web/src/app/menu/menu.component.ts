@@ -13,20 +13,30 @@ export class MenuComponent implements OnInit {
   user: Observable<firebase.User>;
   title = 'NetEOC';
   userdata: firebase.User;
+  userID: string;
 
   constructor(public afAuth: AngularFireAuth) {
     this.user = afAuth.authState;
   }
 
     login() {
+      console.log("login")
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
   logout() {
+     console.log("logout")
     this.afAuth.auth.signOut();
   }
 
+  updateProfileLink(user: firebase.User){
+    this.userID = user.uid;
+  }
+
   ngOnInit() {
+    this.user.subscribe(
+          user => this.updateProfileLink(user)
+      );
   }
 
 }
