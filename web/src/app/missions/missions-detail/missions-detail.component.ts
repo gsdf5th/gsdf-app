@@ -32,7 +32,6 @@ export class MissionsDetailComponent implements OnInit {
               }
 
   addSignupStatus() {
-    console.log(this.afAuth.auth.currentUser)
     var userData = {
       displayName: this.afAuth.auth.currentUser.displayName,
       email: this.afAuth.auth.currentUser.email,

@@ -4,8 +4,8 @@
     <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
         <a class="nav-link active">
-            <button type="button" class="btn btn-primary" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
-              Create Mission
+            <button type="button" class="btn btn-success" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+              Open New Mission Form
             </button>
         </a>
       </li>
@@ -64,7 +64,7 @@
           <input type="button" ng-show="$ctrl.newPin.hasAttachments()" value="Clear Attachments" ng-click="$ctrl.clearAttachments()" class="ng-hide">
       </div>
       <p></p>
-      <button type="submit" class="btn btn-primary" (click)='createMission()' >Create</button>
+      <button type="submit" class="btn btn-primary" (click)='createMission()' >Save new mission</button>
     </form>
   </div>
 </div>

@@ -14,6 +14,6 @@
     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
     <p class="card-text">View and signup for aviable missions.</p>
     <button  routerLink="/missions" type="button" class="btn btn-primary card-link">View Missions</button>
-    <button  routerLink="/missions/create" type="button" class="btn btn-success card-link">Create Mission</button>
+    <button  [routerLink]="['/missions']" [queryParams]="{showForm: true}" type="button" class="btn btn-success card-link">Create Mission</button>
   </div>
 </div>
