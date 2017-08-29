@@ -47,24 +47,18 @@ export class MissionsDetailComponent implements OnInit {
     this.missionSvc.removeMissionSignup(this.id, this.afAuth.auth.currentUser.uid)
   }
 
-  checkSignupStatus1(missionDetails){
-      this.user.subscribe(
-          user => this.checkSignupStatus2(user, missionDetails)
-      );
-  }
 
-  checkSignupStatus2(user, missionDetails){
-    try
-    {
-    if(missionDetails.roster[user.uid]){
-      this.rosterStatus = true
-    }
-    }
-    catch (TypeError)
-    {
-     this.rosterStatus = false;
-    }
-    
+  checkSignupStatus(missionDetails){
+    //console.log(missionDetails)
+      if(missionDetails.roster){
+        if(missionDetails.roster[this.afAuth.auth.currentUser.uid]){
+          this.rosterStatus = true
+        }else{
+            this.rosterStatus = false;
+        }
+      }else{
+         this.rosterStatus = false;
+      }
 
   }
 
@@ -80,8 +74,8 @@ export class MissionsDetailComponent implements OnInit {
     this.roster = this.missionSvc.getRosterList(this.id)
     //this.rosterStatus = this.roster[this.afAuth.auth.currentUser.uid]
     this.missionDetails.subscribe(
-          missionDetails => this.checkSignupStatus1(missionDetails)
-      );
+          missionDetails => this.checkSignupStatus(missionDetails)
+    );
 
   }
 

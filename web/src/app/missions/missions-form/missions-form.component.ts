@@ -56,14 +56,6 @@ export class MissionsFormComponent implements OnInit {
       });
   }
 
-  openD1(event) {
-    console.log(event);
-  }
-
-  openD2(event) {
-    console.log(event)
-  }
-
 
   createMission() {
     this.missionSvc.createMission(this.mission)
