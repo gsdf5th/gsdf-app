@@ -19,4 +19,15 @@ export class UserService {
     return this.user
   }
 
+  getUserDetails(key: string): FirebaseObjectObservable<User> {
+    const userPath =  `${this.basePath}/${key}/pubDetails`;
+    this.user = this.db.object(userPath)
+    return this.user
+  }
+
+  getUserMissions(key: string): FirebaseListObservable<any> {
+    const userPath =  `${this.basePath}/${key}/missions`;
+    return  this.db.list(userPath)
+  }
+
 }

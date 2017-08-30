@@ -9,37 +9,42 @@ import { DatePipe } from '@angular/common';
 import { Mission } from '../shared/mission';
 import { MissionService } from '../shared/mission.service'
 
+import { User } from '../../users/shared/user'
+import { UserService } from '../../users/shared/user.service';
+
 import { Roster } from '../shared/roster';
 
 @Component({
   selector: 'mission-detail',
   templateUrl: './missions-detail.component.html',
   styleUrls: ['./missions-detail.component.css'],
-  providers: [MissionService]
+  providers: [MissionService, UserService]
 })
 export class MissionsDetailComponent implements OnInit {
   missionDetails: FirebaseObjectObservable<Mission>;
   roster: FirebaseListObservable<Roster[]>
   rosterStatus: boolean;
   user: Observable<firebase.User>;
+  userDetails:  FirebaseObjectObservable<User>;
   private sub: any;
   id: string;
   show: boolean = true;
 
   constructor(private missionSvc: MissionService,
+              private userSvc: UserService,
               private route: ActivatedRoute,
               public afAuth: AngularFireAuth) { 
                 this.user = afAuth.authState;
                
               }
 
+  processData(userDetails){
+    this.missionSvc.signupMission(this.id, this.afAuth.auth.currentUser.uid, userDetails)
+  }
+
   addSignupStatus() {
-    var userData = {
-      displayName: this.afAuth.auth.currentUser.displayName,
-      email: this.afAuth.auth.currentUser.email,
-      phoneNumber: this.afAuth.auth.currentUser.phoneNumber
-    }
-    this.missionSvc.signupMission(this.id, this.afAuth.auth.currentUser.uid, userData)
+    this.userSvc.getUserDetails(this.afAuth.auth.currentUser.uid).subscribe( userDetails => this.processData(userDetails))
+    
   }
 
   removeSignupStatus() {
@@ -65,6 +70,7 @@ export class MissionsDetailComponent implements OnInit {
 
 
   ngOnInit() {
+    
     this.sub = this.route.params.subscribe(params => {
        this.id = params['id']; // (+) converts string 'id' to a number
 

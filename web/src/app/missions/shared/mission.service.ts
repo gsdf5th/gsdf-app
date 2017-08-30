@@ -51,14 +51,22 @@ export class MissionService {
     var dbRef = this.db.database.ref(missionPath)
     var missionRosterRef = dbRef.child('roster')
     missionRosterRef.child(userID).set(userData)
+
+    const userPath = `/users/${userID}/missions/data`;
+    var userMissionsRef = this.db.database.ref(userPath);
+    //userMissionsRef.child(key).set(userData)
+
   }  
   // unSignup for a mission
   removeMissionSignup(key: string, userID: string){
     const missionPath =  `${this.basePath}/${key}`;
     var dbRef = this.db.database.ref(missionPath)
     var missionRosterRef = dbRef.child('roster')
-    missionRosterRef.child(userID).remove()
-      .catch(error => this.handleError(error))
+    missionRosterRef.child(userID).remove().catch(error => this.handleError(error))
+
+    const userPath = `/users/${userID}/missions`;
+    var userMissionsRef = this.db.database.ref(userPath);
+    //userMissionsRef.child(key).remove().catch(error => this.handleError(error))
 
   }
   // find out if a user is already signed up for a mission

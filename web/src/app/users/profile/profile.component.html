@@ -1,10 +1,10 @@
 <div class="card">
-  <h4 class="card-header">{{ (userdetail | async)?.displayName }}</h4>
+  <h4 class="card-header">{{ (userdetail | async)?.pubDetails.displayName }}</h4>
   <div class="card-body">
     <div class="container">
       <div class="row">
-        <div class="col">
-          <img src="{{ (userdetail | async)?.photoURL }}" alt="Card image cap">
+        <div class="col d-none d-md-block">
+          <img src="{{ (userdetail | async)?.pubDetails.photoURL }}" alt="Card image cap">
         </div>
         <div class="col">
           <table class="table">
@@ -14,15 +14,15 @@
             <tbody>
               <tr>
                 <th scope="row">Display Name</th>
-                <td>{{ (userdetail | async)?.displayName }}</td>
+                <td>{{ (userdetail | async)?.pubDetails.displayName }}</td>
               </tr>
               <tr>
                 <th scope="row">Email</th>
-                <td>{{ (userdetail | async)?.email }}</td>
+                <td>{{ (userdetail | async)?.pubDetails.email }}</td>
               </tr>
               <tr>
                 <th scope="row">Cell Phone</th>
-                <td><a href="tel:{{ (userdetail | async)?.cellPhone }}">{{ (userdetail | async)?.cellPhone }}</a></td>
+                <td><a href="tel:{{ (userdetail | async)?.pubDetails.cellPhone }}">{{ (userdetail | async)?.pubDetails.cellPhone }}</a></td>
               </tr>
             </tbody>
           </table>

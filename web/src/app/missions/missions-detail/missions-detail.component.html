@@ -67,7 +67,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let member of roster | async">
-      <th scope="row">{{member.displayName}}</th>
+      <th scope="row">{{member?.displayName}}</th>
       <td class="d-none d-sm-table-cell">{{member.email}}</td>
       <td>{{member.phoneNumber}}</td>
     </tr>

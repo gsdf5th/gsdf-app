@@ -7,7 +7,10 @@ import * as firebase from 'firebase/app';
 import { Mission } from '../shared/mission';
 import { MissionService } from '../shared/mission.service'
 
-import { User } from '../../users/shared/user';
+
+import { User } from '../../users/shared/user'
+import { UserService } from '../../users/shared/user.service';
+
 
 import { UploadService } from '../shared/upload.service';
 import { RolesService } from '../../users/shared/roles.service';
@@ -18,11 +21,12 @@ import { Role } from '../../users/shared/role';
   selector: 'missions-block',
   templateUrl: './missions-block.component.html',
   styleUrls: ['./missions-block.component.css'],
-  providers: [RolesService]
+  providers: [RolesService, UserService]
 })
 export class MissionsBlockComponent {
   private _user: Observable<firebase.User>
   canCreateMission = false;
+  missionList: any;
 
   @Input()
   set user(user: Observable<firebase.User>) {
@@ -35,13 +39,16 @@ export class MissionsBlockComponent {
   get user(): Observable<firebase.User> { return this._user; }
   
 
-  constructor(private roleSvc: RolesService) {
+  constructor(private roleSvc: RolesService,
+              private userSvc: UserService,
+            ) {
 
     
    }
 
   getMissionRoleStatus(user){
     if(user){
+      this.userSvc.getUserMissions(user.uid).subscribe( missionList => this.missionList = missionList)
       this.roleSvc.getRole("addMission", user.uid).subscribe(
         role => this.displayNewMission(role)
       )
